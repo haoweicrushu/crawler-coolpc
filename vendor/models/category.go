@@ -1,5 +1,9 @@
 package models
 
+import (
+	"time"
+)
+
 // Category 商品種類
 type Category struct {
 	Name string
@@ -19,4 +23,11 @@ type Item struct {
 	SpecialPrice int
 	CoolMoney    int
 	Tags         []string
+	Group        string
+}
+
+// DailyData 每日資料
+type DailyData struct {
+	Date  time.Time
+	Items []Item
 }
