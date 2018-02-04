@@ -28,6 +28,7 @@ type Item struct {
 
 // DailyData 每日資料
 type DailyData struct {
-	Date  time.Time
-	Items []Item
+	TimeStamp time.Time
+	Date      string
+	Items     []Item
 }
