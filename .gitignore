@@ -3,4 +3,4 @@
 !/vendor/models/
 !/vendor/controllers/
 !/vendor/services/
-/config
+*.conf
