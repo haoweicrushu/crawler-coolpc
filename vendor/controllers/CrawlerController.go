@@ -20,8 +20,8 @@ func NewCrawlerController() *CrawlerController {
 	return &CrawlerController{}
 }
 
-// Crawler 爬原價屋
-func (crawler *CrawlerController) Crawler() (items []models.Item) {
+// Craw 爬原價屋
+func (crawler *CrawlerController) Craw() (items []models.Item) {
 	// var items []models.Item
 	c := colly.NewCollector()
 
@@ -66,17 +66,17 @@ func (crawler *CrawlerController) Crawler() (items []models.Item) {
 				if item.CoolMoney != 0 {
 					item.Tags = append(item.Tags, "coolpcDiscount")
 				}
-				fmt.Println(item)
+				// fmt.Println(item)
 				// fmt.Println(oriPrice, specialPrice, coolMoney)
 				// fmt.Println("category = ", category, "subCate = ", subCate, "Name = ", Item)
 			}
 		}
-		fmt.Println("===========")
+		// fmt.Println("===========")
 
 	})
 
 	c.OnRequest(func(r *colly.Request) {
-		fmt.Println("Visiting", r.URL)
+		fmt.Println("爬", r.URL)
 	})
 
 	c.Visit("http://www.coolpc.com.tw/evaluate.php")
