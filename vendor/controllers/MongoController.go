@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"models"
 	"time"
 
@@ -23,4 +24,14 @@ func (m *MongoController) InsertItems(items []models.Item) {
 		item.Date = time.Now()
 		m.Session.DB("crawler").C("item").Insert(item)
 	}
+}
+
+// GetItems 取得 items
+func (m *MongoController) GetItems() (items []models.Item) {
+	err := m.Session.DB("crawler").C("item").Find(nil).All(&items)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	return
 }

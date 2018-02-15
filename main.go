@@ -14,9 +14,9 @@ import (
 
 func loadConfigs() {
 	// local
-	// configFiles, err := shared.GetFileNamesFromDir("./config/", ".conf", "")
+	configFiles, err := shared.GetFileNamesFromDir("./config/", ".conf", "")
 	// GCP
-	configFiles, err := shared.GetFileNamesFromDir("/home/haowei/crawler/config/", ".conf", "")
+	// configFiles, err := shared.GetFileNamesFromDir("/home/haowei/crawler/config/", ".conf", "")
 	if err != nil {
 		fmt.Println("設定檔讀取失敗 = ", err)
 	}
@@ -34,6 +34,8 @@ func main() {
 
 	mgoCtrl := controllers.NewMongoController(getSession())
 	mgoCtrl.InsertItems(items)
+	// items := mgoCtrl.GetItems()
+
 	defer mgoCtrl.Session.Close()
 }
 
